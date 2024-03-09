@@ -1,0 +1,35 @@
+import random
+
+def greet():
+    responses = ["Hello! How can I help you today?", "Hi there! What can I do for you?", "Greetings! What's on your mind?"]
+    return random.choice(responses)
+
+def farewell():
+    responses = ["Goodbye! Have a great day!", "See you later! If you need anything, just ask.", "Farewell!"]
+    return random.choice(responses)
+
+def respond_to_query(query):
+    if "how are you" in query.lower():
+        return "I'm just a computer program, but thanks for asking!"
+    elif "your name" in query.lower():
+        return "I'm your AI assistant. You can call me Assistant."
+    elif "goodbye" in query.lower() or "exit" in query.lower():
+        return farewell()
+    else:
+        return "I'm not sure how to respond to that. If you have any specific commands, feel free to ask."
+
+def main():
+    print(greet())
+
+    while True:
+        user_input = input("You: ")
+
+        if user_input.lower() == "exit":
+            print(farewell())
+            break
+
+        response = respond_to_query(user_input)
+        print("Assistant:", response)
+
+if __name__ == "__main__":
+    main()
